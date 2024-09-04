@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://b53177xe0aekx"]
+
+[ext_resource type="Script" path="res://gameplay/player.gd" id="1_ctwgn"]
+[ext_resource type="Script" path="res://scripts/snake.gd" id="1_pni5c"]
+
+[node name="Player" type="Node2D" node_paths=PackedStringArray("snake")]
+script = ExtResource("1_ctwgn")
+snake = NodePath("Snake")
+
+[node name="Snake" type="Node2D" parent="."]
+script = ExtResource("1_pni5c")

@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://crgl6bfvh4ni0"]
+
+[ext_resource type="Script" path="res://gameplay/snake_part.gd" id="1_esq02"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ywbbw"]
+
+[node name="SnakePart" type="Area2D" node_paths=PackedStringArray("snake_sprite")]
+script = ExtResource("1_esq02")
+snake_sprite = NodePath("SnakePartSprite")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ywbbw")
+
+[node name="SnakePartSprite" type="Sprite2D" parent="."]
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
