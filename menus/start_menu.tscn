@@ -28,6 +28,8 @@ grow_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel/HBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 theme_override_constants/separation = 20
 
 [node name="Label" type="Label" parent="Panel/HBoxContainer/VBoxContainer"]
@@ -36,16 +38,49 @@ theme_override_colors/font_color = Color(0.876017, 0.652359, 0.447653, 1)
 theme_override_font_sizes/font_size = 60
 text = "Snake Unlimited"
 
+[node name="LblHighScore" type="Label" parent="Panel/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.621524, 0.621524, 0.621524, 1)
+text = "High Score: 0"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="Panel/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 5
+
 [node name="GridContainer" type="GridContainer" parent="Panel/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_constants/v_separation = 10
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 12
 
 [node name="BtnSinglePlayer" type="Button" parent="Panel/HBoxContainer/VBoxContainer/GridContainer"]
-custom_minimum_size = Vector2(150, 0)
+custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
 text = "Single Player"
+
+[node name="GridContainer2" type="GridContainer" parent="Panel/HBoxContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+columns = 2
+
+[node name="Label2" type="Label" parent="Panel/HBoxContainer/VBoxContainer/GridContainer/GridContainer2"]
+layout_mode = 2
+text = "Select Snake Color:"
+
+[node name="BtnColor" type="ColorPickerButton" parent="Panel/HBoxContainer/VBoxContainer/GridContainer/GridContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Pick Color"
+flat = true
+color = Color(0.446835, 0.603326, 0.809042, 1)
+edit_alpha = false
+
+[node name="HSeparator2" type="HSeparator" parent="Panel/HBoxContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+theme_override_constants/separation = 40
 
 [node name="BtnQuit" type="Button" parent="Panel/HBoxContainer/VBoxContainer/GridContainer"]
 custom_minimum_size = Vector2(150, 0)
@@ -53,4 +88,5 @@ layout_mode = 2
 text = "Quit"
 
 [connection signal="pressed" from="Panel/HBoxContainer/VBoxContainer/GridContainer/BtnSinglePlayer" to="." method="_on_btn_single_player_pressed"]
+[connection signal="color_changed" from="Panel/HBoxContainer/VBoxContainer/GridContainer/GridContainer2/BtnColor" to="." method="_on_btn_color_color_changed"]
 [connection signal="pressed" from="Panel/HBoxContainer/VBoxContainer/GridContainer/BtnQuit" to="." method="_on_btn_quit_pressed"]

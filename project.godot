@@ -32,6 +32,8 @@ version_control/autoload_on_startup=true
 [global_group]
 
 consumable=""
+collision_detector=""
+snake_part=""
 
 [rendering]
 

@@ -4,7 +4,7 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ywbbw"]
 
-[node name="SnakePart" type="Area2D" node_paths=PackedStringArray("snake_sprite")]
+[node name="SnakePart" type="Area2D" node_paths=PackedStringArray("snake_sprite") groups=["snake_part"]]
 script = ExtResource("1_esq02")
 snake_sprite = NodePath("SnakePartSprite")
 

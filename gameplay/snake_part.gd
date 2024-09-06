@@ -3,6 +3,7 @@ class_name SnakePart extends Area2D
 @export var snake_sprite: Sprite2D
 
 signal consumable_eaten
+signal collided_with_object
 
 var last_position: Vector2 = Vector2(32, 32)
 var moving_dir: Vector2 = Vector2.RIGHT # Angle of Rotation
@@ -54,4 +55,8 @@ func _on_area_entered(area: Area2D) -> void:
 		if area.is_in_group("consumable"):
 			var consumable : Consumable = area as Consumable
 			consumable_eaten.emit(consumable.type, consumable.value)
-			area.call_deferred("queue_free")
+			#area.call_deferred("queue_free")
+		elif area.is_in_group("collision_detector"):
+			pass
+		else:
+			collided_with_object.emit()

@@ -4,7 +4,7 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_unn7n"]
 
-[node name="CollisionDetector" type="Area2D"]
+[node name="CollisionDetector" type="Area2D" groups=["collision_detector"]]
 script = ExtResource("1_81vin")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

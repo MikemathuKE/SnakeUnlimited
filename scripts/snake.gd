@@ -100,7 +100,7 @@ func _on_consumable_eaten(type, value):
 		var new_body_segment : SnakePart = snake_part_scene.instantiate()
 		new_body_segment.snake_sprite.texture = SnakePart.body_texture
 		new_body_segment.snake_sprite.modulate = color
-		print(color)
+		
 		new_body_segment.last_position = tail.position
 		new_body_segment.position = body[body.size()-1].position - body[body.size()-1].moving_dir * Globals.GRID_SIZE
 		new_body_segment.moving_dir = body[body.size()-1].moving_dir
