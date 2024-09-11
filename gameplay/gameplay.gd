@@ -27,7 +27,6 @@ func _ready() -> void:
 	food = spawner.spawn_food()
 	food.regenerate_food.connect(_on_regenerate_food)
 	game_over = false
-	print(game_over)
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("ui_cancel"):
@@ -52,5 +51,4 @@ func pause_game() -> void:
 		
 func _on_game_over(value) -> void:
 	game_over = value
-	print("game over called!")
 	
