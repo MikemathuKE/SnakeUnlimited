@@ -1,6 +1,7 @@
 class_name Player extends Node2D
 
 signal consumable_used
+signal game_over
 
 @export var snake : Snake
 
@@ -34,3 +35,4 @@ func _on_player_collided_with_object():
 	var game_over_menu = game_over_scene.instantiate() as GameOver
 	add_child(game_over_menu)
 	game_over_menu.set_score(points)
+	game_over.emit(true)
