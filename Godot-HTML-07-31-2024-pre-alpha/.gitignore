@@ -1,0 +1,18 @@
+.vscode
+%localappdata%
+ultralight*/
+System Volume Information
+src/*.obj
+demo/ultralight.log
+demo/default
+demo/inspector/
+demo/addons/gdhtml/resources/
+demo/addons/gdhtml/bin/*.dll
+demo/addons/gdhtml/bin/*.*.*.*.dll
+demo/addons/gdhtml/bin/*.*.*.*.exp
+demo/addons/gdhtml/bin/*.*.*.*.lib
+demo/example-site/**/**.*.import
+demo/build/
+demo/example-site/
+.sconsign.dblite
+~*

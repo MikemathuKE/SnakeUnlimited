@@ -18,3 +18,7 @@ func _on_btn_quit_pressed() -> void:
 
 func _on_btn_color_color_changed(color: Color) -> void:
 	Globals.player_color = color
+
+
+func _on_level_options_item_selected(index: int) -> void:
+	Globals.game_level = index

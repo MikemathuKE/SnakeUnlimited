@@ -6,6 +6,7 @@ signal game_over
 @export var snake : Snake
 
 const game_over_scene : PackedScene = preload("res://menus/game_over.tscn")
+var addition_speed: float
 
 var points : int = 0
 
@@ -13,6 +14,14 @@ var points : int = 0
 func _ready() -> void:
 	snake.consumable_utilised.connect(_on_consumable_utilised)
 	snake.head.collided_with_object.connect(_on_player_collided_with_object)
+	
+	match Globals.game_level:
+		0:
+			addition_speed = 400.0
+		1:
+			addition_speed = 300.0
+		2:
+			addition_speed = 200.0
 
 func _on_consumable_utilised(type, value) -> void:
 	points = points + value
@@ -29,7 +38,7 @@ func set_player_position(value) -> void:
 	snake.set_snake_position(value)
 
 func speed_up() -> void:
-	snake.speed = snake.speed + 400.0
+	snake.speed = snake.speed + addition_speed
 
 func _on_player_collided_with_object():
 	var game_over_menu = game_over_scene.instantiate() as GameOver
