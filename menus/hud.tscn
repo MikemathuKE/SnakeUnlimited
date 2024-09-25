@@ -21,13 +21,27 @@ offset_right = 72.5
 offset_bottom = 23.0
 grow_horizontal = 2
 
-[node name="LblHighScore" type="Label" parent="Panel/HBoxContainer"]
+[node name="VSeparator4" type="VSeparator" parent="Panel/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="LblHighScoreHud" type="Label" parent="Panel/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.602047, 0.533701, 0.497493, 1)
+text = "High Score: --"
+
+[node name="VSeparator2" type="VSeparator" parent="Panel/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="LblPersonalBest" type="Label" parent="Panel/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0.548963, 0.548963, 0.548963, 1)
-text = "High Score: 0"
+text = "Personal Best: 0"
 
-[node name="VSeparator2" type="VSeparator" parent="Panel/HBoxContainer"]
+[node name="VSeparator3" type="VSeparator" parent="Panel/HBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 20
 

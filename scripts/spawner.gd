@@ -35,10 +35,11 @@ func spawn_food() -> Food:
 	var food = food_scene.instantiate()
 	food.position = spawn_point
 	# Where we're putting it (Parenting)
-	get_parent().add_child(food)
+	get_parent().call_deferred("add_child", food)
+	#get_parent().add_child(food)
 	return food
 
-func spawn_player_position(index, no_of_sections) -> Vector2:
+func spawn_player_position(_index, _no_of_sections) -> Vector2:
 	var spawn_point : Vector2 = generate_spawn_point()
 	
 	return spawn_point

@@ -1,0 +1,125 @@
+[gd_scene load_steps=3 format=3 uid="uid://bdmcbemecdpxe"]
+
+[ext_resource type="Script" path="res://menus/leaderboard.gd" id="1_gpbdu"]
+
+[sub_resource type="SystemFont" id="SystemFont_mxebm"]
+font_names = PackedStringArray("Impact")
+subpixel_positioning = 0
+
+[node name="Leaderboard" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_gpbdu")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 23.0
+grow_horizontal = 2
+
+[node name="LblLeaderboard" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 32
+text = "Leaderboard"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TabBar" type="TabBar" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 48.0
+offset_bottom = 79.0
+grow_horizontal = 2
+current_tab = 0
+tab_alignment = 1
+tab_count = 3
+tab_0/title = "Expert"
+tab_1/title = "Normal"
+tab_2/title = "Easy"
+
+[node name="Panel" type="Panel" parent="TabBar"]
+layout_mode = 0
+offset_top = 32.0
+offset_right = 1216.0
+offset_bottom = 720.0
+
+[node name="GridContainer" type="GridContainer" parent="TabBar/Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -212.0
+offset_top = 49.0
+offset_right = 213.0
+offset_bottom = 87.0
+grow_horizontal = 2
+theme_override_constants/h_separation = 25
+theme_override_constants/v_separation = 20
+columns = 2
+
+[node name="Label" type="Label" parent="TabBar/Panel/GridContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_mxebm")
+theme_override_font_sizes/font_size = 30
+text = "UserName"
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="TabBar/Panel/GridContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_mxebm")
+theme_override_font_sizes/font_size = 30
+text = "Score"
+horizontal_alignment = 1
+
+[node name="DataTable" type="GridContainer" parent="TabBar/Panel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_top = 113.0
+offset_bottom = 113.0
+grow_horizontal = 2
+theme_override_constants/h_separation = 25
+columns = 2
+
+[node name="BtnBack" type="Button" parent="."]
+layout_mode = 2
+offset_left = 50.0
+offset_top = 657.0
+offset_right = 157.0
+offset_bottom = 704.0
+text = "Back"
+
+[node name="LblDisconnectedLeaderboard" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+offset_left = 400.0
+offset_top = 704.0
+offset_right = 817.0
+offset_bottom = 727.0
+theme_override_colors/font_color = Color(0.963442, 0, 0.186525, 1)
+text = "Not Connected to High Score Server!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="tab_changed" from="TabBar" to="." method="_on_tab_bar_tab_changed"]
+[connection signal="pressed" from="BtnBack" to="." method="_on_btn_back_pressed"]

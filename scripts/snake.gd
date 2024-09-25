@@ -105,7 +105,7 @@ func _on_consumable_eaten(type, value):
 		new_body_segment.position = body[body.size()-1].position - body[body.size()-1].moving_dir * Globals.GRID_SIZE
 		new_body_segment.moving_dir = body[body.size()-1].moving_dir
 		new_body_segment.last_moving_dir = tail.moving_dir
-		add_child(new_body_segment)
+		call_deferred("add_child", new_body_segment)
 		body.push_back(new_body_segment)
 		
 		tail.last_position = tail.position
