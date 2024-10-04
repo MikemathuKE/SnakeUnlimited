@@ -8,12 +8,14 @@ const leader_board_scene : PackedScene = preload("res://menus/leaderboard.tscn")
 
 @onready var lbl_personal_best: Label = %LblPersonalBest
 @onready var lbl_disconnected: Label = %LblDisconnected
+@onready var lbl_loading_text: Label = %LblLoadingText
 
 var networking : Networking = Networking.new()
 
 func _ready() -> void:
 	add_child(networking)
 	lbl_disconnected.visible = false
+	lbl_loading_text.visible = true
 	
 	var personal_best: int = Globals.save_data.high_score
 	lbl_personal_best.text = "Personal Best: " + str(personal_best)
@@ -42,12 +44,15 @@ func _on_btn_leaderboard_pressed() -> void:
 	add_child(leaderboard)
 	
 func _on_get_highest_score(response: Dictionary) -> void:
-	var high_score: int = response['highest_score']
+	print(typeof(response) == TYPE_DICTIONARY)
+	var high_score: int = int(response['highest_score'])
 	
 	if high_score > 0:
 		lbl_high_score.text = "High Score: " + str(high_score)
 		Globals.high_score = str(high_score)
 		lbl_disconnected.visible = false
+		lbl_loading_text.visible = false
 		
 func _on_connection_failed() -> void:
 	lbl_disconnected.visible = true
+	lbl_loading_text.visible = false

@@ -2,6 +2,7 @@ class_name Leaderboard extends Control
 
 @onready var data_table: GridContainer = %DataTable
 @onready var lbl_disconnected_leaderboard: Label = %LblDisconnectedLeaderboard
+@onready var lbl_loading_leaderboard: Label = %LblLoadingLeaderboard
 
 const start_menu_scene : PackedScene = preload("res://menus/start_menu.tscn")
 
@@ -11,6 +12,7 @@ var networking : Networking = Networking.new()
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	lbl_disconnected_leaderboard.visible = false
+	lbl_loading_leaderboard.visible = true
 	networking.get_scores(0)
 	add_child(networking)
 	networking.retrieve_scores.connect(_on_scores_retrieved)
@@ -18,6 +20,7 @@ func _ready() -> void:
 
 func _on_tab_bar_tab_changed(tab: int) -> void:
 	networking.get_scores(tab)
+	lbl_loading_leaderboard.visible = true
 
 func _on_scores_retrieved(data: Dictionary):
 	table_info = data
@@ -45,7 +48,8 @@ func draw_table():
 			data_table.add_child(lbl_user)
 			
 			var lbl_score = Label.new()
-			lbl_score.text = table_info[key]['score']
+			print("Table Info: ", table_info)
+			lbl_score.text = str(table_info[key]['score'])
 			lbl_score.custom_minimum_size.x = 200
 			lbl_score.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 			if position == 1:
@@ -53,6 +57,9 @@ func draw_table():
 			data_table.add_child(lbl_score)
 			
 			position += 1
+			
+	lbl_loading_leaderboard.visible = false
+	lbl_disconnected_leaderboard.visible = false
 
 
 func _on_btn_back_pressed() -> void:
@@ -60,3 +67,4 @@ func _on_btn_back_pressed() -> void:
 	
 func _on_failed_connection() -> void:
 	lbl_disconnected_leaderboard.visible = true
+	lbl_loading_leaderboard.visible = false

@@ -5,10 +5,11 @@ signal highest_score
 signal failed_to_connect
 
 var http_request : HTTPRequest = HTTPRequest.new()
-const SERVER_URL : String = "http://localhost/highscore/high_score.php"
+const SERVER_URL : String = "https://snakeunlimited.mikemathuke.com"
+# const SERVER_URL : String = "http://localhost/highscore/high_score.php"
 const SERVER_HEADERS = ["Content-Type: application/x-www-form-urlencoded", "Cache-Control: max-age=0"]
 const SECRET_KEY : String = "$n4kel1m1ted"
-var nonce = null
+static var nonce = null
 var request_queue : Array = []
 var is_requesting : bool = false
 
@@ -44,8 +45,11 @@ func http_request_completed(_result, _response_code, _headers, _body) -> void:
 		return
 		
 	var response_body = _body.get_string_from_utf8()
-	# Grab our JSON and handle any errors reported by our PHP code:
+	if "violation" in response_body:
+		printerr("Violation occurred: " + response_body)
+		return
 	var response = JSON.parse_string(response_body)
+	# Grab our JSON and handle any errors reported by our PHP code:
 	if response['error'] != "none":
 		printerr("We returned error: " + response['error'])
 		return
